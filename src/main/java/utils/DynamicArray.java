@@ -1,7 +1,5 @@
 package utils;
 
-import com.sun.nio.sctp.PeerAddressChangeNotification;
-
 public class DynamicArray {
     private static final int INITIAL_CAPACITY = 10;
     private static final int EXPANSION_FACTOR = 2;
@@ -67,14 +65,37 @@ public class DynamicArray {
         return -1;
     }
 
-
-    // todo: add() - shift insert
-    // todo: resize()/grow()
-    // todo: remove() - shift delete
-
     private static void validateForNull(String element) {
         if(element == null){
             throw new IllegalArgumentException("List does not support null objects");
         }
     }
+
+
+    public void add(String element){
+        // VALIDATE FOR REAL:
+        validateForNull(element);
+
+        // CONFIRM SPACE AVAILABILITY
+        if(size == data.length){
+            // IF NOT, ADD MORE SLOTS TO INTERNAL ARRAY
+            grow();
+        }
+
+        // ADD NEW ELEMENT AT END OF DATA SET
+        data[size] = element;
+        // UPDATE SIZE COUNT - INCREASE BY ONE
+        size++;
+    }
+
+    private void grow(){
+        String [] newArray = new String[data.length * EXPANSION_FACTOR];
+
+        for (int i = 0; i < size; i++) {
+            newArray[i] = data[i];
+        }
+        data = newArray;
+    }
+
+    // todo: remove() - shift delete
 }
