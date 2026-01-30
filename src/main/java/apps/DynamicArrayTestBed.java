@@ -1,5 +1,7 @@
-package utils;
+package apps;
 
+
+import utils.DynamicArray;
 
 public class DynamicArrayTestBed {
     public static void main() {
