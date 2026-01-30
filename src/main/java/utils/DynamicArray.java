@@ -9,15 +9,40 @@ public class DynamicArray {
     public DynamicArray(){
         data = new String[INITIAL_CAPACITY];
         size = 0;
+
+        bootstrap();
+    }
+
+    private void bootstrap(){
+        for (int i = 0; i < 5; i++) {
+            data[i] = "Hello "+ i;
+            size++;
+        }
     }
 
     public int getSize(){
         return size;
     }
 
+    /**
+     * Returns the element at the specified position.
+     *
+     * @param index the position to retrieve element at
+     * @return the element at the specified position/index
+     * @throws IndexOutOfBoundsException if the specified position is < 0 or >= size of list
+     */
+    public String get(int index){
+        // VALIDATE index
+        if(index < 0 || index >= size){
+            throw new IndexOutOfBoundsException("Supplied index (" + index + ") is outside boundaries of data in list");
+        }
+
+        // RETURN element at index
+        return data[index];
+    }
+
     // todo: add() - shift insert
     // todo: resize()/grow()
     // todo: remove() - shift delete
-    // todo: get() - like overwrite, but return instead of replace
     // todo: contains() - linear search
 }
