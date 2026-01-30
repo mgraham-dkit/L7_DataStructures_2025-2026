@@ -1,7 +1,10 @@
 package utils;
 
+import com.sun.nio.sctp.PeerAddressChangeNotification;
+
 public class DynamicArray {
     private static final int INITIAL_CAPACITY = 10;
+    private static final int EXPANSION_FACTOR = 2;
 
     private String [] data;
     private int size;
@@ -41,20 +44,37 @@ public class DynamicArray {
         return data[index];
     }
 
+    public boolean contains(String target){
+        int index = indexOf(target);
+        if(index != -1){
+            return true;
+        }else{
+            return false;
+        }
+        // return indexOf(target) != -1;
+    }
+
+    public int indexOf(String target){
+        // VALIDATE FOR REAL:
+        validateForNull(target);
+
+        for (int i = 0; i < size; i++) {
+            if(data[i].equalsIgnoreCase(target)){
+                return i;
+            }
+        }
+
+        return -1;
+    }
+
+
     // todo: add() - shift insert
     // todo: resize()/grow()
     // todo: remove() - shift delete
-    // todo: contains() - linear search
-    public boolean contains(String target){
-        // VALIDATE FOR REAL:
-        // If target is null:
-            // throw Illegal Argument Exception
 
-        // for each element in data from 0 to size:
-            // if current element equals target:
-                // return true
-
-        // return false
-        throw new UnsupportedOperationException("DELETE THIS WHEN YOU WRITE THE REAL CODE!");
+    private static void validateForNull(String element) {
+        if(element == null){
+            throw new IllegalArgumentException("List does not support null objects");
+        }
     }
 }
