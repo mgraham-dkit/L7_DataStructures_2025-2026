@@ -45,4 +45,16 @@ public class DynamicArray {
     // todo: resize()/grow()
     // todo: remove() - shift delete
     // todo: contains() - linear search
+    public boolean contains(String target){
+        // VALIDATE FOR REAL:
+        // If target is null:
+            // throw Illegal Argument Exception
+
+        // for each element in data from 0 to size:
+            // if current element equals target:
+                // return true
+
+        // return false
+        throw new UnsupportedOperationException("DELETE THIS WHEN YOU WRITE THE REAL CODE!");
+    }
 }
