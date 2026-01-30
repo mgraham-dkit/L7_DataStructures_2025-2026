@@ -81,7 +81,7 @@ public class DynamicArray_Shell {
      * @param element the String to be checked
      * @throws IllegalArgumentException if supplied String is null
      */
-    private void validateNull(String element){
+    private void validateForNull(String element){
         // todo: Check if supplied String is null
         // If it is, throw an exception (see JavaDoc for which type!)
     }
@@ -115,7 +115,7 @@ public class DynamicArray_Shell {
      * @throws IllegalArgumentException if element to be found is null
      */
     public int indexOf(String element){
-        validateNull(element);
+        validateForNull(element);
 
         // todo: Linear search through internal array (from 0 to end of DATA, not end of array)
             // Check if current element matches supplied element (case-insensitive)
