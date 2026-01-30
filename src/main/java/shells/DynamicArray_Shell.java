@@ -3,6 +3,8 @@ package shells;
 public class DynamicArray_Shell {
     // todo: create a SHARED/STATIC variable to specify how big the internal array should be
     // private static final int INITIAL_CAPACITY...
+    // todo: create a SHARED/STATIC variable to specify how much to grow the internal array by
+    // private static final int EXPANSION_FACTOR...
 
     private String [] data;
     private int size;
@@ -68,7 +70,7 @@ public class DynamicArray_Shell {
     private void ensureCapacity(){
         // If the internal array is full
         if(size == data.length){
-            // todo: Create a new array double size of internal array
+            // todo: Create a new array based on size of internal array * expansion factor
             // todo: Copy all elements from internal array to new array
             // todo: Replace internal array with new array (data = new array)
         }
@@ -112,7 +114,7 @@ public class DynamicArray_Shell {
      * @return the index of the first matching instance found in the list, or -1 if no match is found
      * @throws IllegalArgumentException if element to be found is null
      */
-    public String indexOf(String element){
+    public int indexOf(String element){
         validateNull(element);
 
         // todo: Linear search through internal array (from 0 to end of DATA, not end of array)
