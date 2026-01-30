@@ -5,12 +5,22 @@ public class DynamicArray_Shell {
     // private static final int INITIAL_CAPACITY...
 
     private String [] data;
-    private int count;
+    private int size;
 
     public DynamicArray_Shell(){
         // todo: specify what size array to build
         // data = new String[????];
-        count = 0;
+        size = 0;
+
+        // Populate with dummy data for testing purposes
+        bootstrap();
+    }
+
+    private void bootstrap(){
+        for (int i = 0; i < 5; i++) {
+            data[i] = "Hello "+ i;
+            size++;
+        }
     }
 
     /**
@@ -57,7 +67,7 @@ public class DynamicArray_Shell {
      */
     private void ensureCapacity(){
         // If the internal array is full
-        if(count == data.length){
+        if(size == data.length){
             // todo: Create a new array double size of internal array
             // todo: Copy all elements from internal array to new array
             // todo: Replace internal array with new array (data = new array)
