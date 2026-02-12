@@ -100,8 +100,15 @@ public class DynamicArray {
         }
         data = newArray;
     }
+    public void clear() {
+        // Create new blank array with default settings
+        String[] blank = new String[INITIAL_CAPACITY];
+        // Replace original data array
+        data = blank;
+        // Reset metadata
+        size = 0;
+    }
 
-    // todo: remove() - remove from position
     public String remove(int index){
         // Validate position to confirm it exists
         validateForInvalidAccessIndex(index);
@@ -125,12 +132,4 @@ public class DynamicArray {
 
     // todo: remove() - remove first instance
     // todo: removeAll() - remove all instances
-    public void clear(){
-        // Create new blank array with default settings
-        String [] blank = new String[INITIAL_CAPACITY];
-        // Replace original data array
-        data = blank;
-        // Reset metadata
-        size = 0;
-    }
 }
