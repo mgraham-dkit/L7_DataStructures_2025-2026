@@ -97,5 +97,16 @@ public class DynamicArray {
         data = newArray;
     }
 
-    // todo: remove() - shift delete
+    // todo: remove() - remove from position
+    // todo: remove() - remove first instance
+    // todo: removeAll() - remove all instances
+    // todo: clear() - delete all data in list
+    public void clear(){
+        // Create new blank array with default settings
+        String [] blank = new String[INITIAL_CAPACITY];
+        // Replace original data array
+        data = blank;
+        // Reset metadata
+        size = 0;
+    }
 }
