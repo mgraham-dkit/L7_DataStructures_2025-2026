@@ -34,12 +34,16 @@ public class DynamicArray {
      */
     public String get(int index){
         // VALIDATE index
-        if(index < 0 || index >= size){
-            throw new IndexOutOfBoundsException("Supplied index (" + index + ") is outside boundaries of data in list");
-        }
+        validateForInvalidAccessIndex(index);
 
         // RETURN element at index
         return data[index];
+    }
+
+    private void validateForInvalidAccessIndex(int index) {
+        if(index < 0 || index >= size){
+            throw new IndexOutOfBoundsException("Supplied index (" + index + ") is outside boundaries of data in list");
+        }
     }
 
     public boolean contains(String target){
@@ -98,9 +102,29 @@ public class DynamicArray {
     }
 
     // todo: remove() - remove from position
+    public String remove(int index){
+        // Validate position to confirm it exists
+        validateForInvalidAccessIndex(index);
+
+        // Store element to be deleted
+        String deletedElement = data[index];
+
+        // Shift delete element
+        for (int i = index; i < size-1; i++) {
+            data[i] = data[i+1];
+        }
+        // Wipe duplicate from end of list
+        data[size-1] = null;
+
+        // Change size as we deleted an element
+        size--;
+
+        // Return deleted element back to calling code
+        return deletedElement;
+    }
+
     // todo: remove() - remove first instance
     // todo: removeAll() - remove all instances
-    // todo: clear() - delete all data in list
     public void clear(){
         // Create new blank array with default settings
         String [] blank = new String[INITIAL_CAPACITY];
