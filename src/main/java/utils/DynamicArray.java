@@ -10,8 +10,6 @@ public class DynamicArray {
     public DynamicArray(){
         data = new String[INITIAL_CAPACITY];
         size = 0;
-
-        bootstrap();
     }
 
     private void bootstrap(){
