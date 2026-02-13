@@ -21,5 +21,16 @@ public class DynamicArrayTestBed {
         for (int i = 0; i < myList.getSize(); i++) {
             System.out.println(i + ") " + myList.get(i));
         }
+
+        boolean dataRemoved = myList.remove("String 5");
+        if(dataRemoved){
+            System.out.println("String 5 was removed from the list");
+        }else{
+            System.out.println("Could not remove String 5 from list");
+        }
+        System.out.println("Updated list:");
+        for (int i = 0; i < myList.getSize(); i++) {
+            System.out.println(i + ") " + myList.get(i));
+        }
     }
 }

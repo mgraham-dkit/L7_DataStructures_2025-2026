@@ -130,6 +130,17 @@ public class DynamicArray {
         return deletedElement;
     }
 
-    // todo: remove() - remove first instance
+    public boolean remove(String target){
+        validateForNull(target);
+
+        int index = indexOf(target);
+        if(index == -1){
+            return false;
+        }
+
+        remove(index);
+        return true;
+    }
+
     // todo: removeAll() - remove all instances
 }
