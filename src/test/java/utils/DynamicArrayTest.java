@@ -42,6 +42,46 @@ class DynamicArrayTest {
     }
 
     @Test
+    void contains_notPresent_PopulatedList(){
+        // Create instance of class under test
+        DynamicArray testList = new DynamicArray();
+
+        // Set up test case information
+        testList.add("Hello");
+        testList.add("Goodbye");
+
+        // Set expected result
+        boolean expected = false;
+
+        // Run method
+        String target = "Oh no";
+        boolean actualResult = testList.contains(target);
+
+        // Compare/assert expected with reality
+        assertEquals(expected, actualResult, "Element was found but is not present in list");
+    }
+
+
+    @Test
+    void contains_notPresent_EmptyList(){
+        // Create instance of class under test
+        DynamicArray testList = new DynamicArray();
+
+        // Set up test case information
+        // No information added in empty list text
+
+        // Set expected result
+        boolean expected = false;
+
+        // Run method
+        String target = "Oh no";
+        boolean actualResult = testList.contains(target);
+
+        // Compare/assert expected with reality
+        assertEquals(expected, actualResult, "Element was found but is not present in list");
+    }
+
+    @Test
     void contains_NullElement(){
         // Create instance of class under test
         DynamicArray testList = new DynamicArray();
