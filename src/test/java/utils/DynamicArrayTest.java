@@ -40,4 +40,19 @@ class DynamicArrayTest {
         // Compare/assert expected with reality
         assertEquals(expectedSize, actualResult, "Size of populated list is incorrect");
     }
+
+    @Test
+    void contains_NullElement(){
+        // Create instance of class under test
+        DynamicArray testList = new DynamicArray();
+
+        // No other prep required as the code will trigger an exception
+
+        // Assert that the appropriate exception was thrown
+        assertThrows(IllegalArgumentException.class,
+                () -> {
+                    testList.contains(null);
+                }, "Incorrect (or no) exception thrown"
+        );
+    }
 }
