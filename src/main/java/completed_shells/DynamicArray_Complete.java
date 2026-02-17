@@ -157,6 +157,41 @@ public class DynamicArray_Complete {
         throw new UnsupportedOperationException("Remove this line after you finish the method logic!");
     }
 
+    /**
+     * Removes the element found at the specified position
+     * @param index The index/position from which to remove/delete the data
+     * @return The element removed from the specified position
+     * @throws IndexOutOfBoundsException where the supplied index is outside the boundaries of the data in the list
+     */
+    public String remove(int index){
+        // todo: Complete logic
+        // todo: Validate for illegal index (throw exception if its outside the boundaries)
+        // todo: Store copy of element at specified index
+        // todo: Shift delete element from index
+        // note: This can be done using System.arraycopy() if you want
+        // todo: Return copy of deleted element
+
+        throw new UnsupportedOperationException("Remove this line after you finish the method logic!");
+    }
+
+    /**
+     * Removes the first instance of the specified element (search is case-insensitive)
+     * @param element The element to be removed/deleted from the list
+     * @return True if the element was deleted, false if it could not be found
+     * @throws IllegalArgumentException where the element supplied is null.
+     */
+    public boolean remove(String element){
+        // todo: Complete logic
+        // todo: Validate for null (throw exception if its null)
+        // todo: Locate specified element in list
+        // todo: if not present, return false
+        // todo: Shift delete element from that position
+        // note: This can be done using System.arraycopy() if you want
+        // todo: Return true
+
+        throw new UnsupportedOperationException("Remove this line after you finish the method logic!");
+    }
+
     // Extra methods to attempt if you're bored!
     // todo: set - replace the element at a specified index with a supplied element. Should return replaced/lost element
     // todo: clear - delete all elements in the list (resets list to empty)
