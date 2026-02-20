@@ -97,6 +97,43 @@ class DynamicArrayTest {
     }
 
     @Test
+    void add_InvalidElement_PopulatedList(){
+        // Create instance of class under test
+        DynamicArray testList = new DynamicArray();
+
+        // Populate list
+        String [] elements = {"First element", "Second element", "Third element"};
+        for (int i = 0; i < elements.length; i++) {
+            testList.add(elements[i]);
+        }
+
+        // Define expectations:
+        int expectedSize = elements.length;
+        String invalidElement = null;
+
+        // Assert that the appropriate exception was thrown when adding null element
+        assertThrows(IllegalArgumentException.class,
+                () -> {
+                    testList.add(invalidElement);
+                }, "Incorrect (or no) exception thrown"
+        );
+
+        // Check values
+        // Assert that size has not been updated
+        assertEquals(expectedSize, testList.getSize(), "Size changed when adding invalid element");
+
+        // Assert that element was not added
+        String actualLastElement = testList.get(testList.getSize()-1);
+        assertEquals(elements[elements.length-1], actualLastElement, "Last element in list does not match original " +
+                "last element");
+
+        for (int i = 0; i < elements.length; i++) {
+            assertEquals(elements[i], testList.get(i), "Element at position " + i + " does not match source data " +
+                    "array");
+        }
+    }
+
+    @Test
     void add_PopulatedList(){
         // Create instance of class under test
         DynamicArray testList = new DynamicArray();
