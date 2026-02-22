@@ -51,6 +51,7 @@ public class DynamicArray {
         }else{
             return false;
         }
+        // Alternative approach:
         // return indexOf(target) != -1;
     }
 
@@ -73,16 +74,28 @@ public class DynamicArray {
         }
     }
 
+    /**
+     * Replaces the internal array with a bigger version if it's full.
+     */
+    private void ensureCapacity(){
+        // If the internal array is full
+        if(size == data.length){
+            String [] expanded = new String [data.length * EXPANSION_FACTOR];
+
+            for (int i = 0; i < data.length; i++) {
+                expanded[i] = data[i];
+            }
+
+            data = expanded;
+        }
+    }
 
     public void add(String element){
         // VALIDATE FOR REAL:
         validateForNull(element);
 
         // CONFIRM SPACE AVAILABILITY
-        if(size == data.length){
-            // IF NOT, ADD MORE SLOTS TO INTERNAL ARRAY
-            grow();
-        }
+        ensureCapacity();
 
         // ADD NEW ELEMENT AT END OF DATA SET
         data[size] = element;
