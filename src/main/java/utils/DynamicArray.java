@@ -12,13 +12,6 @@ public class DynamicArray {
         size = 0;
     }
 
-    private void bootstrap(){
-        for (int i = 0; i < 5; i++) {
-            data[i] = "Hello "+ i;
-            size++;
-        }
-    }
-
     public int getSize(){
         return size;
     }
@@ -103,14 +96,6 @@ public class DynamicArray {
         size++;
     }
 
-    private void grow(){
-        String [] newArray = new String[data.length * EXPANSION_FACTOR];
-
-        for (int i = 0; i < size; i++) {
-            newArray[i] = data[i];
-        }
-        data = newArray;
-    }
     public void clear() {
         // Create new blank array with default settings
         String[] blank = new String[INITIAL_CAPACITY];
@@ -151,6 +136,44 @@ public class DynamicArray {
 
         remove(index);
         return true;
+    }
+
+    /**
+     * Validate a given index to check if it's within the boundaries of the data in the array (including the position
+     * after the last element).
+     * (Note: As the internal array may not be full, the boundary is based on the number of elements currently in the
+     * list)
+     * @param index Index/position to validate as existing within this list
+     * @throws IndexOutOfBoundsException if supplied index is < 0 or > size of list
+     */
+    private void validateIndexForAdd(int index){
+        // Remember, the length of the array is not always the end of the data - the array might not be full!
+        if(index < 0 || index > size){
+            throw new IndexOutOfBoundsException("Supplied index (" + index + ") is outside bounds of list");
+        }
+    }
+
+    public void add(int index, String element){
+        // Validate element to confirm it's not null
+        validateForNull(element);
+
+        // Validate index to confirm it's within boundaries -
+        //      remember that the validation for adding is not quite the same as the
+        //      validation for getting!
+        validateIndexForAdd(index);
+
+        // make sure there's enough space for the new element
+        ensureCapacity();
+
+        // shift everything in array up by one space,
+        //  - start at the end of the *data* (not the array!), work towards specified index
+        System.arraycopy(data, index, data, index+1, (size-index));
+
+        // add element into array at specified position
+        data[index] = element;
+
+        // Increase size of list by 1
+        size++;
     }
 
     // todo: removeAll() - remove all instances

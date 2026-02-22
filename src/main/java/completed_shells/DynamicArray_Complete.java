@@ -45,6 +45,21 @@ public class DynamicArray_Complete {
     }
 
     /**
+     * Validate a given index to check if it's within the boundaries of the data in the array (including the position
+     * after the last element).
+     * (Note: As the internal array may not be full, the boundary is based on the number of elements currently in the
+     * list)
+     * @param index Index/position to validate as existing within this list
+     * @throws IndexOutOfBoundsException if supplied index is < 0 or > size of list
+     */
+    private void validateIndexForAdd(int index){
+        // Remember, the length of the array is not always the end of the data - the array might not be full!
+        if(index < 0 || index > size){
+            throw new IndexOutOfBoundsException("Supplied index (" + index + ") is outside bounds of list");
+        }
+    }
+
+    /**
      * Validate a given index to check if it's within the boundaries of the data in the array.
      * (Note: As the internal array may not be full, the boundary is based on the number of elements currently in the
      * list)
@@ -126,20 +141,26 @@ public class DynamicArray_Complete {
     }
 
     public void add(int index, String element){
-        // todo: Validate element to confirm it's not null
+        // Validate element to confirm it's not null
+        validateForNull(element);
 
-        // todo: Validate index to confirm it's within boundaries -
+        // Validate index to confirm it's within boundaries -
         //      remember that the validation for adding is not quite the same as the
         //      validation for getting!
+        validateIndexForAdd(index);
 
-        // todo: make sure there's enough space for the new element
+        // make sure there's enough space for the new element
+        ensureCapacity();
 
-        // todo: shift everything in array up by one space,
+        // shift everything in array up by one space,
         //  - start at the end of the *data* (not the array!), work towards specified index
+        System.arraycopy(data, index, data, index+1, (size-index));
 
-        // todo: add element into array at specified position
+        // add element into array at specified position
+        data[index] = element;
 
-        // todo: Increase size of list by 1
+        // Increase size of list by 1
+        size++;
     }
 
     /**
