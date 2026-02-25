@@ -465,6 +465,138 @@ class DynamicArrayTest {
     }
 
     @Test
+    void add_AddToStart_PopulatedList_ExpandingInternalArray(){
+        // Create instance of class under test
+        DynamicArray testList = new DynamicArray();
+
+        // Populate list with known values
+        String [] elements = {"First element", "Second element", "Third element", "Fourth element", "Fifth element",
+                "Sixth element", "Seventh element", "Eighth element", "Ninth element", "Tenth element"};
+        for (int i = 0; i < elements.length; i++) {
+            testList.add(elements[i]);
+        }
+
+        // Define expectations:
+        // Size should go up
+        int expectedSize = elements.length + 1;
+        // Element inserted should match this
+        String toBeAdded = "New element";
+        // Element should be added at this position
+        int expectedPosition = 0;
+
+        // Add new element
+        testList.add(expectedPosition, toBeAdded);
+
+        // Check values
+        // Assert that size has been updated correctly
+        assertEquals(expectedSize, testList.getSize(), "Size did not increase by 1 when adding single element");
+
+        // Assert that element was added in correct location
+        String actualInsertedElement = testList.get(expectedPosition);
+        assertEquals(toBeAdded, actualInsertedElement, "Element at specified position in list does not match what was " +
+                "added");
+
+        // Assert that all original elements in list are in original order, just shifted to the right by 1
+        for (int i = 0; i < expectedPosition; i++) {
+            assertEquals(elements[i], testList.get(i), "Element at position " + i + " does not match source data " +
+                    "array");
+        }
+
+        for (int i = expectedPosition; i < elements.length; i++) {
+            assertEquals(elements[i], testList.get(i+1), "Element at position " + i+1 + " does not match source data " +
+                    "array");
+        }
+    }
+
+    @Test
+    void add_AddToMiddle_PopulatedList_ExpandingInternalArray(){
+        // Create instance of class under test
+        DynamicArray testList = new DynamicArray();
+
+        // Populate list with known values
+        String [] elements = {"First element", "Second element", "Third element", "Fourth element", "Fifth element",
+                "Sixth element", "Seventh element", "Eighth element", "Ninth element", "Tenth element"};
+        for (int i = 0; i < elements.length; i++) {
+            testList.add(elements[i]);
+        }
+
+        // Define expectations:
+        // Size should go up
+        int expectedSize = elements.length + 1;
+        // Element inserted should match this
+        String toBeAdded = "New element";
+        // Element should be added at this position (middle of list)
+        int expectedPosition = 2;
+
+        // Add new element
+        testList.add(expectedPosition, toBeAdded);
+
+        // Check values
+        // Assert that size has been updated correctly
+        assertEquals(expectedSize, testList.getSize(), "Size did not increase by 1 when adding single element");
+
+        // Assert that element was added in correct location
+        String actualInsertedElement = testList.get(expectedPosition);
+        assertEquals(toBeAdded, actualInsertedElement, "Element at specified position in list does not match what was " +
+                "added");
+
+        // Assert that all original elements in list are in original order, just shifted to the right by 1
+        for (int i = 0; i < expectedPosition; i++) {
+            assertEquals(elements[i], testList.get(i), "Element at position " + i + " does not match source data " +
+                    "array");
+        }
+
+        for (int i = expectedPosition; i < elements.length; i++) {
+            assertEquals(elements[i], testList.get(i+1), "Element at position " + i+1 + " does not match source data " +
+                    "array");
+        }
+    }
+
+    @Test
+    void add_AddToAfterEnd_PopulatedList_ExpandingInternalArray(){
+        // Create instance of class under test
+        DynamicArray testList = new DynamicArray();
+
+        // Populate list with known values
+        String [] elements = {"First element", "Second element", "Third element", "Fourth element", "Fifth element",
+                "Sixth element", "Seventh element", "Eighth element", "Ninth element", "Tenth element"};
+        for (int i = 0; i < elements.length; i++) {
+            testList.add(elements[i]);
+        }
+
+        // Define expectations:
+        // Size should go up
+        int expectedSize = elements.length + 1;
+        // Element inserted should match this
+        String toBeAdded = "New element";
+        // Element should be added at this position (after end of list)
+        int expectedPosition = 4;
+
+        // Add new element
+        testList.add(expectedPosition, toBeAdded);
+
+        // Check values
+        // Assert that size has been updated correctly
+        assertEquals(expectedSize, testList.getSize(), "Size did not increase by 1 when adding single element");
+
+        // Assert that element was added in correct location
+        String actualInsertedElement = testList.get(expectedPosition);
+        assertEquals(toBeAdded, actualInsertedElement, "Element at specified position in list does not match what was " +
+                "added");
+
+        // Assert that all original elements in list are in original order, just shifted to the right by 1
+        for (int i = 0; i < expectedPosition; i++) {
+            assertEquals(elements[i], testList.get(i), "Element at position " + i + " does not match source data " +
+                    "array");
+        }
+
+        for (int i = expectedPosition; i < elements.length; i++) {
+            assertEquals(elements[i], testList.get(i+1), "Element at position " + i+1 + " does not match source data " +
+                    "array");
+        }
+    }
+
+    @Test
     void add_AddAfterEnd_PopulatedList_InvalidElement(){
         // Create instance of class under test
         DynamicArray testList = new DynamicArray();
