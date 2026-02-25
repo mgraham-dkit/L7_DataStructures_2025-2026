@@ -165,6 +165,40 @@ class DynamicArrayTest {
         }
     }
 
+
+    @Test
+    void add_PopulatedList_ExpandingInternalArray(){
+        // Create instance of class under test
+        DynamicArray testList = new DynamicArray();
+
+        // Populate list
+        String [] elements = {"First element", "Second element", "Third element", "Fourth element", "Fifth element",
+                "Sixth element", "Seventh element", "Eighth element", "Ninth element", "Tenth element"};
+        for (int i = 0; i < elements.length; i++) {
+            testList.add(elements[i]);
+        }
+
+        // Define expectations:
+        int expectedSize = elements.length + 1;
+        String toBeAdded = "New element";
+
+        // Add new element
+        testList.add(toBeAdded);
+
+        // Check values
+        // Assert that size has been updated correctly
+        assertEquals(expectedSize, testList.getSize(), "Size did not increase by 1 when adding single element");
+
+        // Assert that element was added in correct location
+        String actualLastElement = testList.get(testList.getSize()-1);
+        assertEquals(toBeAdded, actualLastElement, "Last element in list does not match what was added");
+
+        for (int i = 0; i < elements.length; i++) {
+            assertEquals(elements[i], testList.get(i), "Element at position " + i + " does not match source data " +
+                    "array");
+        }
+    }
+
     @Test
     void add_PopulatedList_OneElementPresent(){
         // Create instance of class under test
