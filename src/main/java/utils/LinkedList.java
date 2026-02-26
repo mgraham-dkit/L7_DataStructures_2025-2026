@@ -50,4 +50,8 @@ public class LinkedList {
     }
 
     // todo: indexOf() - takes in value to be located, returns position of first instance
+    // todo: set()
+    // todo: contains()
+    // todo: clear()
+    // todo: toArray()
 }
