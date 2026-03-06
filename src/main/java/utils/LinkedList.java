@@ -109,6 +109,59 @@ public class LinkedList {
         size++;
     }
 
+    /**
+     * Validate a given index to check if it's within the boundaries of the data in the list (0 - size inclusive).
+
+     * @param index Index/position to validate as existing within this list
+     * @throws IndexOutOfBoundsException if supplied index is < 0 or > size of list
+     */
+    private void validateIndexOutOfBoundsInclusive(int index) {
+        if(index < 0 || index > size){
+            throw new IndexOutOfBoundsException("Supplied index outside bounds of list - was " + index
+                    + ", last " + "allowable position to add: " + (size));
+        }
+    }
+
+    /**
+     * Add a new element at a specified position between 0 and size (inclusive).
+     * This version of the action allows for adding AFTER the data within the list;
+     * it uses the next possible index as its limit
+     * @param index The position at which to insert the new element (0-size inclusive)
+     * @param element The value to be inserted into the list
+     * @throws IllegalArgumentException if the element supplied is null
+     * @throws IndexOutOfBoundsException if the index supplied is < 0 or > size of list
+     */
+    public void addInclusive(int index, String element) {
+        // VALIDATION
+        // Validate element to confirm good AND real data : validateForNull
+        validateForNullElement(element);
+        // Validate index to confirm position is within list (adding at end permitted) :
+        // validateIndexOutOfBoundsInclusive
+        validateIndexOutOfBoundsInclusive(index);
+
+        Node newNode = new Node(element);
+
+        if (size == 0) {            // If the list is empty
+            first = newNode;
+            last = newNode;
+        } else if (index == 0) {    // If it's being added to the start
+            newNode.next = first;
+            first = newNode;
+        } else if (index == size){  // If it's being added at the end
+            last.next = newNode;
+            last = newNode;
+        }else {                     // If it's being added anywhere else in between
+            Node current = first;
+            for (int i = 0; i < index - 1; i++) {
+                current = current.next;
+            }
+            newNode.next = current.next;
+            current.next = newNode;
+        }
+
+        // Element added, increase size metadata
+        size++;
+    }
 
     // todo: indexOf() - takes in value to be located, returns position of first instance
     // todo: set()
