@@ -3,6 +3,13 @@ package utils;
 public class LinkedList {
     private int size;
     private Node first;
+    private Node last;
+
+    public LinkedList(){
+        first = null;
+        last = null;
+        size = 0;
+    }
 
     private static class Node{
         private String data;
@@ -22,16 +29,37 @@ public class LinkedList {
         Node newNode = new Node(element);
         if(first == null){
             first = newNode;
-            size++;
-            return;
+        }else{
+            last.next = newNode;
         }
 
-        Node current = first;
-        while(current.next != null){
-            current = current.next;
-        }
-        current.next = newNode;
+        last = newNode;
         size++;
+    }
+
+    public String getFirst(){
+        if(isEmpty()){
+            return null;
+        }
+        return first.data;
+    }
+
+    public String getLast(){
+        if(isEmpty()){
+            return null;
+        }
+        return last.data;
+    }
+
+    public int getSize(){
+        return size;
+    }
+
+    public boolean isEmpty(){
+        if(first == null){
+            return true;
+        }
+        return false;
     }
 
     public String get(int index){
@@ -48,6 +76,8 @@ public class LinkedList {
 
         return current.data;
     }
+
+
 
     // todo: indexOf() - takes in value to be located, returns position of first instance
     // todo: set()
