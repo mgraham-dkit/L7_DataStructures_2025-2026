@@ -14,5 +14,12 @@ public class LinkedListTestBed {
         for (int i = 0; i < myList.getSize(); i++) {
             System.out.println(i + ") " + myList.get(i));
         }
+        long start = System.nanoTime();
+        int index = myList.lastIndexOf("String 9");
+        long end = System.nanoTime();
+        long timeTaken = end - start;
+
+        System.out.println("String 9 was found at position " + index);
+        System.out.println("Time taken to find element: " + timeTaken);
     }
 }
