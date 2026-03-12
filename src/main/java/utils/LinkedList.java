@@ -164,8 +164,23 @@ public class LinkedList {
     }
 
     // todo: indexOf() - takes in value to be located, returns position of first instance
-    // todo: set()
+    public int indexOf(String element){
+        validateForNullElement(element);
+
+        Node current = first;
+        for(int i = 0; i < size; i++){
+            if(element.equalsIgnoreCase(current.data)){
+                return i;
+            }
+            current = current.next;
+        }
+
+        return -1;
+    }
+    // todo: lastIndexOf()
     // todo: contains()
+
+    // todo: set()
     // todo: clear()
     // todo: toArray()
 }
