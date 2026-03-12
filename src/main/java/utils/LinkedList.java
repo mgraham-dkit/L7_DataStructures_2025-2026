@@ -177,7 +177,24 @@ public class LinkedList {
 
         return -1;
     }
+
     // todo: lastIndexOf()
+    public int lastIndexOf(String element){
+        validateForNullElement(element);
+
+        int index = -1;
+
+        Node current = first;
+        for(int i = 0; i < size; i++){
+            if(element.equalsIgnoreCase(current.data)){
+                index = i;
+            }
+            current = current.next;
+        }
+
+        return index;
+    }
+
     // todo: contains()
 
     // todo: set()
