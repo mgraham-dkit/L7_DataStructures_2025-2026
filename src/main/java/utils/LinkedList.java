@@ -6,9 +6,7 @@ public class LinkedList {
     private Node last;
 
     public LinkedList(){
-        first = null;
-        last = null;
-        size = 0;
+        clear();
     }
 
     private static class Node{
@@ -220,6 +218,43 @@ public class LinkedList {
         return replaced;
     }
 
-    // todo: clear()
-    // todo: toArray()
+    public void clear(){
+        first = null;
+        last = null;
+        size = 0;
+    }
+
+
+    public String[] toArray(){
+        // Create new array of same size as list
+        String [] listArray = new String[size];
+        // for each node in list
+        Node current = first;
+        for (int i = 0; i < size ; i++) {
+            // Copy data from within current node into array at same position
+            listArray[i] = current.data;
+            current = current.next;
+        }
+
+        // Return array
+        return listArray;
+    }
+
+    public void addAll(String [] values){
+        if(values == null){
+            throw new IllegalArgumentException("Array of values cannot be null");
+        }
+
+        // Loop through all values in the string array
+        for (int i = 0; i < values.length; i++) {
+
+            // Add each one that is not null into the current list
+            add(values[i]);
+        }
+    }
+
+    public LinkedList getSublist(int startIndex, int endIndex){
+        // Return a new LinkedList made up of all elements between startIndex and endIndex (exclusive)
+        throw new UnsupportedOperationException("Not done yet!");
+    }
 }
