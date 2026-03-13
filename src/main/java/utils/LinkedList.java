@@ -161,7 +161,36 @@ public class LinkedList {
         size++;
     }
 
-    // todo: indexOf() - takes in value to be located, returns position of first instance
+    public String remove(int index){
+        validateIndexOutOfBounds(index);
+
+        String removed = null;
+        if(index == 0){
+            removed = first.data;
+            if(first == last){
+                last = null;
+            }
+            first = first.next;
+        }else{
+            Node current = first;
+            Node prev = null;
+
+            for (int i = 0; i < index; i++) {
+                prev = current;
+                current = current.next;
+            }
+            removed = current.data;
+            prev.next=current.next;
+
+            if(index == size-1){
+                last = prev;
+            }
+        }
+
+        size--;
+        return removed;
+    }
+
     public int indexOf(String element){
         validateForNullElement(element);
 
