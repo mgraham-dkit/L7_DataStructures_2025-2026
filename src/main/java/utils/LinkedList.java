@@ -178,7 +178,6 @@ public class LinkedList {
         return -1;
     }
 
-    // todo: lastIndexOf()
     public int lastIndexOf(String element){
         validateForNullElement(element);
 
@@ -195,9 +194,32 @@ public class LinkedList {
         return index;
     }
 
-    // todo: contains()
+    public boolean contains(String target){
+        validateForNullElement(target);
 
-    // todo: set()
+        return indexOf(target) != -1;
+    }
+
+
+    public String set(int index, String value){
+        validateIndexOutOfBounds(index);
+        validateForNullElement(value);
+
+        // Loop to specified position (where we want to replace data)
+        Node current = first;
+        for (int i = 0; i < index; i++) {
+            current = current.next;
+        }
+        // Save old version that is being replaced
+        String replaced = current.data;
+
+        // Replace data with new value
+        current.data = value;
+
+        // return replaced information
+        return replaced;
+    }
+
     // todo: clear()
     // todo: toArray()
 }
