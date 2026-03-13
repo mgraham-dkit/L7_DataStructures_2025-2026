@@ -1,6 +1,6 @@
 package utils;
 
-public class DynamicArray {
+public class DynamicArray implements List {
     private static final int INITIAL_CAPACITY = 10;
     private static final int EXPANSION_FACTOR = 2;
 
