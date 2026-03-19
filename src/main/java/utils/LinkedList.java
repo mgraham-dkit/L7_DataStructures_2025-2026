@@ -191,6 +191,49 @@ public class LinkedList {
         return removed;
     }
 
+    public boolean remove(String element){
+        validateForNullElement(element);
+
+        // Handle empty list
+        if(isEmpty()){
+            return false;
+        }
+        // Handle deleting from start of list
+        if(first.data.equalsIgnoreCase(element)){
+            // Handle list of one
+            if(first == last){
+                last = null;
+            }
+            first = first.next;
+            size--;
+            return true;
+        }
+
+        Node current = first;
+        Node prev = null;
+
+        for (int i = 0; i < size; i++) {
+            // Detect a match in remainder of list
+            if(current.data.equalsIgnoreCase(element)) {
+                // Delete element
+                prev.next=current.next;
+
+                // Handle deleting from end
+                if(i == size-1) {
+                    last = prev;
+                }
+
+                // Decrease size
+                size--;
+                // Return that value was deleted
+                return true;
+            }
+            prev = current;
+            current = current.next;
+        }
+        return false;
+    }
+
     public int indexOf(String element){
         validateForNullElement(element);
 
