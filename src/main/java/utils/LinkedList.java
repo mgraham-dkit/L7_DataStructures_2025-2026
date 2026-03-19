@@ -1,6 +1,6 @@
 package utils;
 
-public class LinkedList {
+public class LinkedList implements List {
     private int size;
     private Node first;
     private Node last;

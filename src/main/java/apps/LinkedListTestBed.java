@@ -1,11 +1,13 @@
 package apps;
 
 
+import utils.DynamicArray;
 import utils.LinkedList;
+import utils.List;
 
 public class LinkedListTestBed {
     public static void main() {
-        LinkedList myList = new LinkedList();
+        List myList = new LinkedList();
 
         for (int i = 0; i < 10; i++) {
             myList.add("String " + i);
@@ -14,7 +16,7 @@ public class LinkedListTestBed {
         displayList(myList);
 
         long start = System.nanoTime();
-        int index = myList.lastIndexOf("String 9");
+        int index = myList.indexOf("String 9");
         long end = System.nanoTime();
         long timeTaken = end - start;
 
@@ -55,7 +57,7 @@ public class LinkedListTestBed {
         displayList(myList);
     }
 
-    private static void displayList(LinkedList myList) {
+    private static void displayList(List myList) {
         for (int i = 0; i < myList.getSize(); i++) {
             System.out.println(i + ") " + myList.get(i));
         }
