@@ -43,6 +43,16 @@ public class LinkedListTestBed {
         removed = myList.remove(removeIndex);
         System.out.println("Removed from " + removeIndex + ": " + removed);
         displayList(myList);
+        System.out.println("-----------------------------------------------------");
+        String toBeDeleted = "String 1";
+        boolean success = myList.remove(toBeDeleted);
+        if(success){
+            System.out.println(toBeDeleted + "was deleted!");
+        }
+        else{
+            System.out.println(toBeDeleted + "could not be deleted");
+        }
+        displayList(myList);
     }
 
     private static void displayList(LinkedList myList) {
