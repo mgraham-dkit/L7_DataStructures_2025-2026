@@ -57,6 +57,14 @@ public class ListSet {
         return true;
     }
 
-    // todo: Implement custom set
+
+    public String set(int index, String element){
+        if(list.contains(element)){
+            return null;
+        }
+
+        return list.set(index, element);
+    }
+
     // todo: Implement any other add-style methods currently in list!
 }
