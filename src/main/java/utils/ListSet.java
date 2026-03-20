@@ -38,4 +38,17 @@ public class ListSet {
     public boolean remove(String element){
         return list.remove(element);
     }
+
+    public boolean add(String element){
+        if(!list.contains(element)){
+            return false;
+        }
+
+        list.add(element);
+        return true;
+    }
+
+    // todo: Implement custom addInclusive
+    // todo: Implement custom set
+    // todo: Implement any other add-style methods currently in list!
 }
