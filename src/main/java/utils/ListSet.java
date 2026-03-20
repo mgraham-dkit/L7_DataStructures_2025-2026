@@ -40,7 +40,7 @@ public class ListSet {
     }
 
     public boolean add(String element){
-        if(!list.contains(element)){
+        if(list.contains(element)){
             return false;
         }
 
