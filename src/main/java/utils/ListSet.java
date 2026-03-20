@@ -48,7 +48,15 @@ public class ListSet {
         return true;
     }
 
-    // todo: Implement custom addInclusive
+    public boolean addInclusive(int index, String element){
+        if(list.contains(element)){
+            return false;
+        }
+
+        list.addInclusive(index, element);
+        return true;
+    }
+
     // todo: Implement custom set
     // todo: Implement any other add-style methods currently in list!
 }
