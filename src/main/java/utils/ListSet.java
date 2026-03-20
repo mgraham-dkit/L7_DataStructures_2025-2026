@@ -48,7 +48,7 @@ public class ListSet {
         return true;
     }
 
-    public boolean addInclusive(int index, String element){
+    public boolean add(int index, String element){
         if(list.contains(element)){
             return false;
         }
