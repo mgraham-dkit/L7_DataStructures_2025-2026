@@ -5,9 +5,27 @@ import utils.DynamicArray;
 import utils.LinkedList;
 import utils.List;
 
+import java.util.Scanner;
+
 public class LinkedListTestBed {
     public static void main() {
-        List myList = new LinkedList();
+        Scanner sc = new Scanner(System.in);
+        List myList = null;
+
+        System.out.println("Which do you want to use?");
+        System.out.println("1) LinkedList");
+        System.out.println("2) DynamicArray");
+        String choice = sc.nextLine();
+        switch(choice.toLowerCase()){
+            case "1":
+                myList = new LinkedList();
+                break;
+            case "2":
+                myList = new DynamicArray();
+                break;
+            default:
+                myList = new LinkedList();
+        }
 
         for (int i = 0; i < 10; i++) {
             myList.add("String " + i);
