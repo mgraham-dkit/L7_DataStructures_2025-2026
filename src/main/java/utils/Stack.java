@@ -36,6 +36,14 @@ public class Stack {
     }
 
     public void push(String element){
+        validateForNull(element);
+
         data.add(element);
+    }
+
+    private static void validateForNull(String element) {
+        if(element == null){
+            throw new IllegalArgumentException("Null elements cannot be added to the Stack");
+        }
     }
 }
