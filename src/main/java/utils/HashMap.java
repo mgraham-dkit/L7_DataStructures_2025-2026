@@ -41,5 +41,21 @@ public class HashMap {
         return hash;
     }
 
+    public void put(String key, String value){
+        // VALIDATE
+        validateKeyForNull(key);
 
+        // Calculate where this key belongs within the map
+        int hash = hashFunction(key);
+        // Wrap key and value together so we can store them in a single position
+        Entry newEntry = new Entry(key, value);
+        // Store key-value pair in the map at the calculated position
+        map[hash] = newEntry;
+    }
+
+    private static void validateKeyForNull(String key) {
+        if(key == null){
+            throw new IllegalArgumentException("Key cannot be null");
+        }
+    }
 }
