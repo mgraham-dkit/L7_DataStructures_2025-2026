@@ -58,4 +58,19 @@ public class HashMap {
             throw new IllegalArgumentException("Key cannot be null");
         }
     }
+
+    public String get(String key){
+        // VALIDATE key - make sure it's not null
+        validateKeyForNull(key);
+
+        // Calculate where this key belongs within the map
+        int hash = hashFunction(key);
+
+
+        Entry match = map[hash];
+        if(match == null){
+            return null;
+        }
+        return match.value;
+    }
 }
