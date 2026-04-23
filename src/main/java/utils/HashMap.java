@@ -19,4 +19,12 @@ public class HashMap {
             this.value = value;
         }
     }
+
+    public int count(){
+        return count;
+    }
+
+    public boolean isEmpty(){
+        return count == 0;
+    }
 }
