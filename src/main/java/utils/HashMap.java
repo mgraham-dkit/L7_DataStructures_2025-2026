@@ -27,4 +27,19 @@ public class HashMap {
     public boolean isEmpty(){
         return count == 0;
     }
+
+    int hashFunction(String key){
+        // Turn key into number
+        int hash = key.hashCode();
+
+        // Turn number into POSTIVE version of number (> 0)
+        hash = Math.abs(hash);
+
+        // Make number fit within range of map slots
+        hash = hash % map.length;
+
+        return hash;
+    }
+
+
 }
